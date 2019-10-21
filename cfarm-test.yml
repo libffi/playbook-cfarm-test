@@ -19,7 +19,13 @@
         dest: $HOME/libffi-{{ host_triple }}/libffi
 
     - name: Prepare the source
-      command: (cd $HOME/libffi-{{ host_triple }}/libffi; ./autogen.sh)
+      command: ./autogen.sh
+      chdir: $HOME/libffi-{{ host_triple }}/libffi
 
-    - name: Build the source
-      command: (cd $HOME/libffi-{{ host_triple }}/build; ../libffi/configure && make)
+    - name: Configure the source
+      command: ../libffi/configure
+      chdir: $HOME/libffi-{{ host_triple }}/libffi
+
+    - name: Build
+      command: make
+      chdir: $HOME/libffi-{{ host_triple }}/libffi
