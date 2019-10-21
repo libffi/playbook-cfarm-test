@@ -24,8 +24,8 @@
 
     - name: Configure the source
       command: ../libffi/configure
-      chdir: $HOME/libffi-{{ host_triple }}/libffi
+        chdir: $HOME/libffi-{{ host_triple }}/libffi
 
     - name: Build
       command: make
-      chdir: $HOME/libffi-{{ host_triple }}/libffi
+        chdir: $HOME/libffi-{{ host_triple }}/libffi
