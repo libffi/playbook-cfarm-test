@@ -32,3 +32,8 @@
       command: make
       args:
         chdir: $HOME/libffi-{{ host_triple }}/libffi
+
+    - name: Run tests
+      command: make check
+      args:
+        chdir: $HOME/libffi-{{ host_triple }}/libffi
