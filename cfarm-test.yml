@@ -1,0 +1,25 @@
+---
+- name: Build and test libffi
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Delete old working directory
+      file:
+        path: $HOME/libffi-{{ host-triple }}
+        state: absent
+
+    - name: Create working directory
+      file:
+        path: $HOME/libffi-{{ host-triple }}/build
+        state: directory
+
+    - name: Clone libffi source
+      git:
+        repo: 'https://github.com/libffi/libffi.git'
+        dest: $HOME/libffi-{{ host-triple }}
+
+    - name: Prepare the source
+      command: (cd $HOME/libffi-{{ host-triple }}/libffi; ./autogen.sh)
+
+    - name: Build the source
+      command: (cd $HOME/libffi-{{ host-triple }}/build; ../libffi/configure && make)
