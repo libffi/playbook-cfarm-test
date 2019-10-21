@@ -20,12 +20,15 @@
 
     - name: Prepare the source
       command: ./autogen.sh
-      chdir: $HOME/libffi-{{ host_triple }}/libffi
+      args:
+        chdir: $HOME/libffi-{{ host_triple }}/libffi
 
     - name: Configure the source
       command: ../libffi/configure
+      args:
         chdir: $HOME/libffi-{{ host_triple }}/libffi
 
     - name: Build
       command: make
+      args:
         chdir: $HOME/libffi-{{ host_triple }}/libffi
