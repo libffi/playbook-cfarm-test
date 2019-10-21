@@ -16,7 +16,7 @@
     - name: Clone libffi source
       git:
         repo: 'https://github.com/libffi/libffi.git'
-        dest: $HOME/libffi-{{ host_triple }}
+        dest: $HOME/libffi-{{ host_triple }}/libffi
 
     - name: Prepare the source
       command: (cd $HOME/libffi-{{ host_triple }}/libffi; ./autogen.sh)
