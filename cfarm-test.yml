@@ -5,21 +5,21 @@
   tasks:
     - name: Delete old working directory
       file:
-        path: $HOME/libffi-{{ host-triple }}
+        path: $HOME/libffi-{{ host_triple }}
         state: absent
 
     - name: Create working directory
       file:
-        path: $HOME/libffi-{{ host-triple }}/build
+        path: $HOME/libffi-{{ host_triple }}/build
         state: directory
 
     - name: Clone libffi source
       git:
         repo: 'https://github.com/libffi/libffi.git'
-        dest: $HOME/libffi-{{ host-triple }}
+        dest: $HOME/libffi-{{ host_triple }}
 
     - name: Prepare the source
-      command: (cd $HOME/libffi-{{ host-triple }}/libffi; ./autogen.sh)
+      command: (cd $HOME/libffi-{{ host_triple }}/libffi; ./autogen.sh)
 
     - name: Build the source
-      command: (cd $HOME/libffi-{{ host-triple }}/build; ../libffi/configure && make)
+      command: (cd $HOME/libffi-{{ host_triple }}/build; ../libffi/configure && make)
