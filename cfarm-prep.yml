@@ -1,0 +1,31 @@
+---
+- name: Build tools
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Delete old installation directory
+      file:
+        path: $HOME/usr
+        state: absent
+
+    - name: Create installation directory
+      file:
+        path: $HOME/usr
+        state: directory
+
+    - name: Create installation directory
+      file:
+        path: $HOME/source
+        state: directory
+
+    - name: Download tools
+      get_url:
+        url: "{{ item }}"
+        dest: $HOME/source
+      with_items:
+        - "https://mirror.csclub.uwaterloo.ca/gnu/binutils/binutils-2.33.1.tar.gz"
+        - "https://mirror.csclub.uwaterloo.ca/gnu/gcc/gcc-9.2.0/gcc-9.2.0.tar.gz"
+        - "https://mirror.csclub.uwaterloo.ca/gnu/autoconf/autoconf-2.69.tar.gz"
+        - "https://mirror.csclub.uwaterloo.ca/gnu/automake/automake-1.16.tar.gz"
+        - "https://mirror.csclub.uwaterloo.ca/gnu/libtool/libtool-2.4.6.tar.gz"
+        - "https://mirror.csclub.uwaterloo.ca/gnu/make/make-4.2.tar.gz"
