@@ -40,6 +40,7 @@
 
     - name: Build everything
       command: . $HOME/usr/bin/build.sh
+      args:
         chdir: $HOME/build
 
 
