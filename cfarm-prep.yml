@@ -38,8 +38,8 @@
     - name: Copy build script
       copy: src=build.sh dest=$HOME/usr/bin/build.sh
 
-    - name: Build gcc
+    - name: Build everything
       command: . $HOME/usr/bin/build.sh
-      chdir: $HOME/build
+        chdir: $HOME/build
 
 
