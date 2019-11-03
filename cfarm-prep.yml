@@ -36,7 +36,7 @@
         state: directory
 
     - name: Copy build script
-      copy: src=build.sh dest=$HOME/usr/bin/build.sh
+      copy: src=build.sh dest=$HOME/usr/bin/build.sh mode='755'
 
     - name: Build everything
       command: . $HOME/usr/bin/build.sh
