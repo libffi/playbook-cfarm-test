@@ -39,7 +39,7 @@
       copy: src=build.sh dest=$HOME/usr/bin/build.sh mode='755'
 
     - name: Build everything
-      command: . $HOME/usr/bin/build.sh
+      command: $HOME/usr/bin/build.sh
       args:
         chdir: $HOME/build
 
