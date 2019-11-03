@@ -13,11 +13,6 @@
         path: $HOME/usr
         state: directory
 
-    - name: Create installation directory
-      file:
-        path: $HOME/source
-        state: directory
-
     - name: Download tools
       get_url:
         url: "{{ item }}"
@@ -29,3 +24,22 @@
         - "https://mirror.csclub.uwaterloo.ca/gnu/automake/automake-1.16.tar.gz"
         - "https://mirror.csclub.uwaterloo.ca/gnu/libtool/libtool-2.4.6.tar.gz"
         - "https://mirror.csclub.uwaterloo.ca/gnu/make/make-4.2.tar.gz"
+
+    - name: Delete build directories
+      file:
+        path: $HOME/build
+        state: absent
+
+    - name: Create build directory
+      file:
+        path: $HOME/build
+        state: directory
+
+    - name: Copy build script
+      copy: src=build.sh dest=$HOME/usr/bin/build.sh
+
+    - name: Build gcc
+      command: . $HOME/usr/bin/build.sh
+      chdir: $HOME/build
+
+
