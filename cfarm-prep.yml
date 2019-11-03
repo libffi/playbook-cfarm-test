@@ -10,7 +10,7 @@
 
     - name: Create installation directory
       file:
-        path: $HOME/usr
+        path: $HOME/usr/bin
         state: directory
 
     - name: Download tools
